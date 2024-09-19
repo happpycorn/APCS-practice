@@ -15,4 +15,4 @@ NOT 閘（NOT gate）： 僅接收一個輸入，並將其反轉。如果輸入�
 
 請模擬這個電路系統，確定每個閘的輸出值，以及計算整個電路的最大延遲時間，最大延遲時間即訊號從輸入端口傳遞到輸出端口可能經過最多邏輯閘的數量。
 
-Link : https://zerojudge.tw/ShowProblem?problemid=m933
+Link : [https://zerojudge.tw/ShowProblem?problemid=m933](https://zerojudge.tw/ShowProblem?problemid=m933)
