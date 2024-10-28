@@ -2,6 +2,8 @@ n, q = [int(i) for i in input().split()]
 
 data = [int(i) for i in input().split()]
 
+data.sort()
+
 quest = [int(input()) for _ in range(q)]
 
 for a in quest:
@@ -20,9 +22,9 @@ for a in quest:
 
                 break
 
-            if not isNotFind:
+        if not isNotFind:
 
-                break
+            break
     
     if isNotFind:
 

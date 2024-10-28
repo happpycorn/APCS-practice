@@ -1,29 +1,27 @@
-n, k = [int(i) for i in input().split()]
+def main():
 
-dp = [int(i) for i in input().split()]
+    from sys import stdin
+    e = stdin.readline
 
-sum_dp = [sum(dp[0:i]) for i in range(len(dp))]
+    n, k = map(int, e().split())
+    dp = list(map(int, e().split()))
 
-dp_result = {}
+    sum_dp = [0] * n
+    sum_result = [0] * n
 
-def hug(start, end):
+    sum_value = 0
 
-    if start == end:
+    for i in range(n):
 
-        return dp[start]
-    
-    if dp_result.has_key(f"{start}+{end}"):
+        sum_value += dp[i]
+        sum_dp[i] = sum_value
 
-        return dp_result[f"{start}+{end}"]
-    
-    max_value = 0
+    sum_result[:k] = sum_dp[:k]
 
-    for i in range(end-start):
-    
-        result = hug(start, start+i) + hug(start+i+1, end)
+    for i in range(k, n):
 
-        max_value = max(result, max_value)
+        sum_result[i] = max([sum_result[i-j-1] + sum_dp[i] - sum_dp[i-j] for j in range(k+1)])
 
-    return max_value
+    print(sum_result[-1])
 
-print(hug(0, len(dp)))
+main()
