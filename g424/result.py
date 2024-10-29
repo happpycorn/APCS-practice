@@ -1,27 +1,30 @@
 def main():
 
     from sys import stdin
+    from collections import deque
+
     e = stdin.readline
 
     n, k = map(int, e().split())
-    dp = list(map(int, e().split()))
+    values = list(map(int, e().split()))
+    values.append(0)
+    sum_value = sum(values)
+    dq = deque([[0, -1]])
 
-    sum_dp = [0] * n
-    sum_result = [0] * n
+    for i in range(n+1):
 
-    sum_value = 0
+        while dq and dq[0][1] < i-k-1:
 
-    for i in range(n):
+            dq.popleft()
 
-        sum_value += dp[i]
-        sum_dp[i] = sum_value
+        value = dq[0][0] + values[i]
 
-    sum_result[:k] = sum_dp[:k]
+        while dq[-1][0] > value:
 
-    for i in range(k, n):
-
-        sum_result[i] = max([sum_result[i-j-1] + sum_dp[i] - sum_dp[i-j] for j in range(k+1)])
-
-    print(sum_result[-1])
+            dq.pop()
+        
+        dq.append([value, i])
+    
+    print(sum_value - dq[0][0])
 
 main()
