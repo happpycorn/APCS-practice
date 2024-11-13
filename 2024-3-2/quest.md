@@ -1,0 +1,1 @@
+[https://zerojudge.tw/ShowProblem?problemid=o712](https://zerojudge.tw/ShowProblem?problemid=o712)
