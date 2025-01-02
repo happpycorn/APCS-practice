@@ -8,17 +8,18 @@ for _ in range(n-1):
     ind[j] += 1
 # order
 r = [i for i in range(n) if ind[i] == 0]
+it = iter(r)
 o = []
-while r:
-    i = r.pop(0)
+while True:
+    i = next(it, None)
+    if i is None: break
     o.append(i)
     for j in d[i]:
         ind[j] -= 1
         if ind[j] == 0: r.append(j)
 # count
 dp = [None]*n
-o.reverse()
-for i in o:
+for i in reversed(o):
     if len(d[i]) == 0: dp[i] = (0, 0); continue
     max_l = sec_l = -1*float("inf")
     max_c = 0
