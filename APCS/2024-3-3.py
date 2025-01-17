@@ -1,3 +1,5 @@
+# https://zerojudge.tw/ShowProblem?problemid=o713
+
 m, n, q = map(int, input().split())
 
 data = []

@@ -1,3 +1,5 @@
+# https://zerojudge.tw/ShowProblem?problemid=m370
+
 pos, con = map(int,input().split())
 
 mi = []

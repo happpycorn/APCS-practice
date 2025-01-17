@@ -1,3 +1,5 @@
+# https://zerojudge.tw/ShowProblem?problemid=m932
+
 m, n, k = map(int, input().split(" "))
 
 a = [input() for _ in range(m)]
