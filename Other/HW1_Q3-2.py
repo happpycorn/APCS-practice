@@ -1,0 +1,1 @@
+(lambda l: (lambda a=0, c=False, b=[]: any([b.append(i+1) or (c := True) if (a := a + x) < 0 else None for i, x in enumerate(l)]) is None or b.append(a) or print(b[int(c)-1]))())([int(input()) for _ in range(int(input()))])

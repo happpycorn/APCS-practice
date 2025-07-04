@@ -1,0 +1,1 @@
+print((lambda e: (lambda _, a, b: 1 if sum(a)/len(a) > sum(b)/len(b) else 2 if sum(a)/len(a) < sum(b)/len(b) else 0)(e(), list(map(int, e().strip().split(","))), list(map(int, e().strip().split(",")))))(__import__('sys').stdin.readline))
