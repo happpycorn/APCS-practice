@@ -1,3 +1,5 @@
 # APCS practice
 
-question link : [https://yuihuang.com/apcs/](https://yuihuang.com/apcs/)
+Judge(ZJ): [https://zerojudge.tw](https://zerojudge.tw)
+
+2025/07/01 update: 我考到 5/3 了 :DDDD
