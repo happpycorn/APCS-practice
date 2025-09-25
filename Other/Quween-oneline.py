@@ -1,0 +1,1 @@
+(f:=lambda a,n:print(*a)if not n else[f(a+[i],n-{i})for i in n if all(abs(j-len(a))!=abs(v-i)for j,v in enumerate(a))])([],set(range(int(input()))))
