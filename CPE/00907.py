@@ -2,31 +2,39 @@ def main():
     from sys import stdin
     e = stdin.readline
 
-    def bsearch(a, l, r, k):
+    def bsearch(a, k):
+        l = max(a)
+        r = sum(a)
+        ans = r
+
         while l <= r:
-            mid = int((l + r)/2)
-            if possible(a, k, mid): l = mid + 1
-            else: r = mid - 1
-        return mid
+            mid = (l+r)//2
+            if possible(a, k, mid):
+                ans = mid
+                r = mid - 1
+            else: l = mid + 1
+
+        return ans
     
     def possible(a, k, m):
-        idx = 0
-        dk = 0
-        while idx < len(a):
-            if dk > k: return True
-            dm = 0
-            while idx < len(a):
-                if dm + a[idx] > m: break
-                dm += a[idx]
-                idx += 1
-            dk += 1
-        return False
+        d = 0
+        ndist = 0
+
+        for dist in a:
+            if ndist + dist > m:
+                d += 1
+                ndist = dist
+            else:
+                ndist += dist
+            
+            if d > k: return False
+        return True
 
     while True:
         s = e()
         if not s: break
         n, k = map(int, s.split())
         d = [int(e().strip()) for _ in range(n+1)]
-        print(bsearch(d, min(d), sum(d), k))
+        print(bsearch(d, k))
         
 main()

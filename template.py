@@ -1,3 +1,32 @@
+def bsearch(a, l, r, x):
+    while l <= r:
+        mid = (l+r)//2
+        if a[mid] == x: return mid
+        if a[mid] < x: l = mid+1
+        else: r = mid-1
+    return -1
+
+def bsearch_min(a, l, r, x):
+    ans = r
+    while l <= r:
+        mid = (l+r)//2
+        if a[mid] < x: l = mid+1
+        else: 
+            ans = mid
+            r = mid-1
+    return ans
+
+def gready(a, x):
+    num = 0
+    i = 0
+
+    for di in a:
+        if i + di > x:
+            num += 1
+            i = di
+        else: i += di
+    return num
+
 class BIT:
     def __init__(self, n):
         self.n = n
