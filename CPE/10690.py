@@ -1,40 +1,36 @@
+# DP、位元操作
 def main():
     from sys import stdin
-    data = stdin.read().splitlines()
-    idx = 0
+    e = stdin.readline
     content = []
 
-    while idx < len(data):
-        n, m = map(int, data[idx].split())
-        idx += 1
-        d = list(map(int, data[idx].split()))
-        idx += 1
+    while True:
+        t = e().strip()
+        if not t: break
+        n, m = map(int, t.split())
+        d = list(map(int, e().split()))
 
         all_v = sum(d)
-        ave_v = all_v/2
         k = min(n, m)
 
         d = [i + 50 for i in d]
         
-        max_sum = 100 * 50 + 1
-        dp = [[False] * (max_sum) for _ in range(k + 1)]
-        dp[0][0] = True
+        dp = [0 for _ in range(k + 1)]
+        dp[0] = 1
 
         for var in d:
             for i in range(k, 0, -1):
-                for j in range(var, max_sum):
-                    if dp[i-1][j-var]: dp[i][j] = True
+                dp[i] |= (dp[i-1] << var)
         
-        min_sum = float("inf")
-        max_sum = float("inf")
-        for i in range(len(dp[-1])):
-            if dp[-1][i]:
-                v = i-50*k
-                min_sum = min(min_sum, v)
-                max_sum = max_sum if abs(max_sum-ave_v) < abs(v-ave_v) else v
-
-        min_value = min_sum * (all_v-min_sum)
-        max_value = max_sum * (all_v-max_sum)
+        min_value = float("inf")
+        max_value = float("-inf")
+        max_possible_sum = k * 100 
+        for i in range(max_possible_sum + 1):
+            if (dp[-1] >> i) & 1:  
+                v = i - 50 * k
+                current_product = v * (all_v - v)
+                min_value = min(min_value, current_product)
+                max_value = max(max_value, current_product)
 
         content.append(f"{max_value} {min_value}")
     print("\n".join(content))
